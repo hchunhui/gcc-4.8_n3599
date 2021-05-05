@@ -1,0 +1,13 @@
+{
+  local:
+  _Z12new_c_parse_filev;
+  _Z20cp_convert_range_forP9tree_nodeS0_S0_;
+  _Z24decl_spec_seq_has_spec_pPK21cp_decl_specifier_seq12cp_decl_spec;
+  _Z23c_invoke_pragma_handlerj;
+  _Z10pragma_lexPP9tree_node;
+  _Z11init_pragmav;
+  _Z17c_register_pragmaPKcS0_PFvP10cpp_readerE;
+  _Z27c_register_pragma_with_dataPKcS0_PFvP10cpp_readerPvES3_;
+  _Z32c_register_pragma_with_expansionPKcS0_PFvP10cpp_readerE;
+  _Z41c_register_pragma_with_expansion_and_dataPKcS0_PFvP10cpp_readerPvES3_;
+};

@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with GCC; see the file COPYING3.  If not see
 <http://www.gnu.org/licenses/>.  */
 
+#include "gcc-plugin.h"
 #include "config.h"
 #include "system.h"
 #include "coretypes.h"
@@ -1241,9 +1242,6 @@ c_register_pragma_1 (const char *space, const char *name,
 	 allocates 7 bits in c_token.  At present this is sufficient.  */
       gcc_assert (id < 64);
     }
-
-  cpp_register_deferred_pragma (parse_in, space, name, id,
-				allow_expansion, false);
 }
 
 /* Register a C pragma handler, using a space and a name.  It disallows pragma
@@ -1341,20 +1339,6 @@ c_invoke_pragma_handler (unsigned int id)
 void
 init_pragma (void)
 {
-  if (flag_openmp)
-    {
-      const int n_omp_pragmas = sizeof (omp_pragmas) / sizeof (*omp_pragmas);
-      int i;
-
-      for (i = 0; i < n_omp_pragmas; ++i)
-	cpp_register_deferred_pragma (parse_in, "omp", omp_pragmas[i].name,
-				      omp_pragmas[i].id, true, true);
-    }
-
-  if (!flag_preprocess_only)
-    cpp_register_deferred_pragma (parse_in, "GCC", "pch_preprocess",
-				  PRAGMA_GCC_PCH_PREPROCESS, false, false);
-
 #ifdef HANDLE_PRAGMA_PACK_WITH_EXPANSION
   c_register_pragma_with_expansion (0, "pack", handle_pragma_pack);
 #else
@@ -1385,5 +1369,3 @@ init_pragma (void)
   /* Allow plugins to register their own pragmas. */
   invoke_plugin_callbacks (PLUGIN_PRAGMAS, NULL);
 }
-
-#include "gt-c-family-c-pragma.h"

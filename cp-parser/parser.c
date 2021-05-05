@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with GCC; see the file COPYING3.  If not see
 <http://www.gnu.org/licenses/>.  */
 
+#include "gcc-plugin.h"
 #include "config.h"
 #include "system.h"
 #include "coretypes.h"
@@ -1276,6 +1277,7 @@ make_id_declarator (tree qualifying_scope, tree unqualified_name,
    type, represented as identifiers.  ATTRIBUTES represent the attributes that
    appertain to the pointer or reference.  */
 
+static
 cp_declarator *
 make_pointer_declarator (cp_cv_quals cv_qualifiers, cp_declarator *target,
 			 tree attributes)
@@ -1304,6 +1306,7 @@ make_pointer_declarator (cp_cv_quals cv_qualifiers, cp_declarator *target,
    represent the attributes that appertain to the pointer or
    reference.  */
 
+static
 cp_declarator *
 make_reference_declarator (cp_cv_quals cv_qualifiers, cp_declarator *target,
 			   bool rvalue_ref, tree attributes)
@@ -1332,6 +1335,7 @@ make_reference_declarator (cp_cv_quals cv_qualifiers, cp_declarator *target,
    member of CLASS_TYPE.  ATTRIBUTES represent the attributes that
    appertain to the pointer or reference.  */
 
+static
 cp_declarator *
 make_ptrmem_declarator (cp_cv_quals cv_qualifiers, tree class_type,
 			cp_declarator *pointee,
@@ -1362,6 +1366,7 @@ make_ptrmem_declarator (cp_cv_quals cv_qualifiers, tree class_type,
    "const"-qualified member function.  The EXCEPTION_SPECIFICATION
    indicates what exceptions can be thrown.  */
 
+static
 cp_declarator *
 make_call_declarator (cp_declarator *target,
 		      tree parms,
@@ -1396,6 +1401,7 @@ make_call_declarator (cp_declarator *target,
 /* Make a declarator for an array of BOUNDS elements, each of which is
    defined by ELEMENT.  */
 
+static
 cp_declarator *
 make_array_declarator (cp_declarator *element, tree bounds)
 {
@@ -1452,6 +1458,7 @@ cp_parameter_declarator *no_parameters;
 /* Create a parameter declarator with the indicated DECL_SPECIFIERS,
    DECLARATOR and DEFAULT_ARGUMENT.  */
 
+static
 cp_parameter_declarator *
 make_parameter_declarator (cp_decl_specifier_seq *decl_specifiers,
 			   cp_declarator *declarator,
@@ -28376,7 +28383,7 @@ pragma_lex (tree *value)
 /* Parse one entire translation unit.  */
 
 void
-c_parse_file (void)
+new_c_parse_file (void)
 {
   static bool already_called = false;
 
@@ -28394,4 +28401,4 @@ c_parse_file (void)
   the_parser = NULL;
 }
 
-#include "gt-cp-parser.h"
+// #include "gt-cp-parser.h"

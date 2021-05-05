@@ -26,6 +26,7 @@ along with GCC; see the file COPYING3.  If not see
 /* ??? not all decl nodes are given the most useful possible
    line numbers.  For example, the CONST_DECLs for enum values.  */
 
+#include "gcc-plugin.h"
 #include "config.h"
 #include "system.h"
 #include "coretypes.h"
@@ -14373,5 +14374,3 @@ cxx_comdat_group (tree decl)
 
   return name;
 }
-
-#include "gt-cp-decl.h"

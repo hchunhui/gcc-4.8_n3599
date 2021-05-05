@@ -24,6 +24,7 @@ along with GCC; see the file COPYING3.  If not see
      all methods must be provided in header files; can't use a source
      file that contains only the method templates and "just win".  */
 
+#include "gcc-plugin.h"
 #include "config.h"
 #include "system.h"
 #include "coretypes.h"
@@ -21011,5 +21012,3 @@ print_template_statistics (void)
 	   (long) htab_elements (type_specializations),
 	   htab_collisions (type_specializations));
 }
-
-#include "gt-cp-pt.h"
