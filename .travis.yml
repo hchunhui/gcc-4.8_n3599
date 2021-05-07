@@ -5,10 +5,12 @@ dist: trusty
 
 install:
 #- sudo apt-get update -qq
-- sudo apt-get install -qq build-essential gcc-4.8-plugin-dev --no-install-recommends
+- sudo apt-get install -qq build-essential rpm2cpio --no-install-recommends
 
 script:
-- make
+- wget -c http://mirror.centos.org/centos/7/os/x86_64/Packages/gcc-plugin-devel-4.8.5-44.el7.x86_64.rpm
+- rpm2cpio gcc-plugin-devel-4.8.5-44.el7.x86_64.rpm | cpio -idmv
+- make PLUGIN_DIR="$PWD/usr/lib/gcc/x86_64-redhat-linux/4.8.5/plugin"
 
 after_success:
  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh

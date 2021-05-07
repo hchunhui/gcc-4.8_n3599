@@ -1,6 +1,6 @@
 .PHONY: clean
 CC = g++-4.8
-PLUGIN_DIR = `${CC} -print-file-name=plugin`
+PLUGIN_DIR ?= `${CC} -print-file-name=plugin`
 OBJS = plugin.o cp-parser/parser.o cp-parser/c-pragma.o cp-parser/pt.o cp-parser/decl.o
 CFLAGS = -I${PLUGIN_DIR}/include -I${PLUGIN_DIR}/include/cp -I${PLUGIN_DIR}/include/c-family -fno-rtti -fPIC -O2
 .c.o:
